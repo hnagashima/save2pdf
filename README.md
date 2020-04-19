@@ -1,15 +1,23 @@
 # save2pdf
-save MATLAB Figure as a pdf, as same as shown in the Window.
+save2pdf saves MATLAB Figure as a pdf, as same as shown in the Window.
+Background color is deleted.
+save2pdf_transparent deletes the background in the axes.
 
 ## Requirements: 
 This function Requires [export_fig](https://jp.mathworks.com/matlabcentral/fileexchange/23629-export_fig).
 
 ## Example: 
 
+save current Figure as shown in the display.
 ```matlab
-save2pdf; % 現在のFigureをそのまま保存
-save2pdf(figure(1), 'fig1.pdf'); % figure(1)をfig1.pdfとして保存
+save2pdf;
 ```
+save Figure1 as 'Fig1.pdf'
+```
+f = figure(1);
+save2pdf(f, 'fig1.pdf');
+```
+
 
 
 
@@ -30,7 +38,6 @@ You can add above menu on the default Figure function by following script
 ```Matlab
 set(0, defaultFigureCreatedFcn, UIaddFunction);
 ```
-この関数をdefaultFigureCreatedFcnに追加することで、デフォルトのfigureにメニューを追加できます。
 
 
 
