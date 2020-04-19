@@ -1,11 +1,20 @@
 # save2pdf
 save2pdf saves MATLAB Figure as a pdf, as same as shown in the Window.
+
 Background color is deleted.
 save2pdf_transparent deletes the background in the axes.
 
 ## Requirements: 
 This function Requires [export_fig](https://jp.mathworks.com/matlabcentral/fileexchange/23629-export_fig).
 
+
+## Syntax
+```
+save2pdf;
+save2pdf(figure_handle);
+save2pdf(___,filename);
+save2pdf_transparent(___);
+```
 ## Example: 
 
 save current Figure as shown in the display.
