@@ -9,11 +9,12 @@ This function Requires [export_fig](https://jp.mathworks.com/matlabcentral/filee
 
 
 ## Syntax
-```
+```matlab
 save2pdf;
 save2pdf(figure_handle);
 save2pdf(___,filename);
 save2pdf_transparent(___);
+set(0, 'defaultFigureCreateFcn',@save2pdf_menu);
 ```
 ## Example: 
 
@@ -22,30 +23,19 @@ save current Figure as shown in the display.
 save2pdf;
 ```
 save Figure1 as 'Fig1.pdf'
-```
+```matlab
 f = figure(1);
 save2pdf(f, 'fig1.pdf');
 ```
 
 
 
+### setup UI
 
-
-## Special Example: SettingUI
+Following function adds UI menu in the default figure. Add following script to the startup.m .
 
 ```Matlab
-function UIaddFunction(varargin)
-  mh = uimenu(figure_handle,'Text' ,'MyFun');
-  eh1 = uimenu(mh,'text','Export to PDF');
-  fun = @(src,event,varargin) save2pdf(mh.Parent);
-  eh1.MenuSelectedFcn = fun;
-end
-```
-
-This script adds "MyFun" in the FIGURE UI menu, then adds save2pdf command. 
-You can add above menu on the default Figure function by following script
-```Matlab
-set(0, defaultFigureCreatedFcn, UIaddFunction);
+set(0, defaultFigureCreatedFcn, @save2pdf_menu);
 ```
 
 
