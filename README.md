@@ -35,7 +35,7 @@ save2pdf(f, 'fig1.pdf');
 Following function adds UI menu in the default figure. Add following script to the startup.m .
 
 ```Matlab
-set(0, defaultFigureCreatedFcn, @save2pdf_menu);
+set(0, 'defaultFigureCreateFcn', @save2pdf_menu);
 ```
 
 
