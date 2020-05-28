@@ -13,6 +13,9 @@ function save2pdf_menu(src,event,menuhandle)
 % Run following script before figure creation.
 % set(0, 'DefaultFigureCreateFcn',@save2pdf_menu);
 %
+% To add menu to existing figure:
+% save2pdf_menu(figure_handle);
+%
 % To add menus in the present menu.
 % mh = uimenu(gcf, 'Text', 'Custom'); % Create custom menu
 % save2pdf_menu(gcf,[], mh); % Add sub menus of save2pdf to the menu, mh.
