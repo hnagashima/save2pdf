@@ -33,13 +33,13 @@ save2pdf(f, 'fig1.pdf');
 
 ## setup UI
 
-Following function adds UI menu in the default figure. Add following script to the startup.m .
+Following command adds UI menu in the default figure. Add following script to the startup.m .
 
 ```Matlab
 set(0, 'defaultFigureCreateFcn', @save2pdf_menu);
 ```
 
-If you have another UI menu function, you can add save2pdf menus as submenues of the present menu.
+If you have another UI menu function, you can add save2pdf menus as submenues to the present menu.
 ```Matlab
 mh = uimenu(gcf, 'Text', 'Custom'); % Create UI menu and obtain a menu handle.
 save2pdf_menu(gcf, [] mh); % Add save2pdf to the mh.
