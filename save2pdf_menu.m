@@ -2,17 +2,26 @@ function save2pdf_menu(src,event,menuhandle)
 % Add save2pdf menu to figure menubar.
 %
 % save2pdf_menu(src, event,menuhandle)
-% - src :
-% - event :
-% - menuhandle : parent handle. obtained by ( = uimenu(figure_handle)).
+% - src : object (target figure handle which is saved by this menu)
+% - event : (not used.)
+% - menuhandle : parent menu handle. obtained by ( = uimenu(figure_handle)).
 %
 % menuhandle specifies parent uimenu handle.
 % If menuhandle is not given, parent uimenu is 'exportPDF'.
 %
-% This function should be called when figure is created.
-% Run following script at first.
+% This function can be called as a default.
+% Run following script before figure creation.
 % set(0, 'DefaultFigureCreateFcn',@save2pdf_menu);
 %
+% To add menus in the present menu.
+% mh = uimenu(gcf, 'Text', 'Custom'); % Create custom menu
+% save2pdf_menu(gcf,[], mh); % Add sub menus of save2pdf to the menu, mh.
+% 
+% Save Figure without menu removes menu(mh) from figure to avoid errors
+% when figure is shared with another computers. This menu function deletes
+% menu data, and then run default FigureCreate function to restore menus
+% and so on. If save2pdf is not set as default menu, save2pdf menu will
+% be deleted parmanently.
 
 
 narginchk(1,3);
@@ -49,7 +58,7 @@ eh1.MenuSelectedFcn = @(src,event,varargin) save2pdf(mh.Parent);
 eh2 = uimenu(mh, 'text', 'Export to transparent PDF');
 eh2.MenuSelectedFcn = @(src,event, varargin) save2pdf_transparent(mh.Parent);
 
-eh3 = uimenu(mh, 'text', 'Save Figure');
+eh3 = uimenu(mh, 'text', 'Save Figure without menu');
 eh3.MenuSelectedFcn = @(src, event, varargin) saveAsFig(mh.Parent);
 eh3.Accelerator = 'T';
 
@@ -71,7 +80,7 @@ eh3.Accelerator = 'T';
             
             % Restore original menu
             createFcn = get(0,'defaultFigureCreateFcn');
-            createFcn(fig);
+            createFcn(fig,[]);
         end
         
         
