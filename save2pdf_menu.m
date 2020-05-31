@@ -40,14 +40,14 @@ end
 
 %% add menu
 if nargin < 3
-    mh = uimenu(f,'Text' ,'exportPDF');
+    mh = uimenu(f,LabelName ,'exportPDF');
     mh.HandleVisibility = 'off'; % undeletable object.
 else
     mh = menuhandle;
 end
 
 % —á
-% eh0 = uimenu(mh,'text','test');
+% eh0 = uimenu(mh,LabelName,'test');
 % fun0 = @(src,event,varargin) disp('test');
 % eh0.MenuSelectedFcn = fun0;
 
@@ -55,14 +55,14 @@ end
 % You need to specify as a 1st and 2nd inputs,
 % even though you don't need src and event.
 
-eh1 = uimenu(mh,'text','Export to PDF');
-eh1.MenuSelectedFcn = @(src,event,varargin) save2pdf(mh.Parent);
+eh1 = uimenu(mh,LabelName,'Export to PDF');
+eh1.Callback = @(src,event,varargin) save2pdf(mh.Parent);
 
-eh2 = uimenu(mh, 'text', 'Export to transparent PDF');
-eh2.MenuSelectedFcn = @(src,event, varargin) save2pdf_transparent(mh.Parent);
+eh2 = uimenu(mh, LabelName, 'Export to transparent PDF');
+eh2.Callback = @(src,event, varargin) save2pdf_transparent(mh.Parent);
 
-eh3 = uimenu(mh, 'text', 'Save Figure without menu');
-eh3.MenuSelectedFcn = @(src, event, varargin) saveAsFig(mh.Parent);
+eh3 = uimenu(mh, LabelName, 'Save Figure without menu');
+eh3.Callback = @(src, event, varargin) saveAsFig(mh.Parent);
 eh3.Accelerator = 'T';
 
     function saveAsFig(fig,~)
@@ -90,5 +90,18 @@ eh3.Accelerator = 'T';
     end
 
 f.CreateFcn = [];% reset default figure function.
+
+end
+
+function pname = LabelName
+% Return 'text' or 'label' depending on MATLAB version
+V = version('-release');
+if str2double(V(1:4)) < 2018        
+    pname = 'label';
+else
+    pname = 'text';
+end
+
+
 
 end
