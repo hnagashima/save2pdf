@@ -64,7 +64,7 @@ f.PaperPosition = [0 0 f.Position(3:4)/72];
 f.PaperSize = f.PaperPosition(3:4);
 %print(pdfFileName,'-dpdf','-r300');
 f.Color = 'none';
-export_fig(pdfFileName,'-pdf','-nocrop','-transparent',f);
+export_fig(pdfFileName,'-pdf','-nocrop','-transparent','-painters',f);
 
 for k = 1:size(fn,1)
     if isequal(fn{k,2}, f.(fn{k,1})) ~= 1
