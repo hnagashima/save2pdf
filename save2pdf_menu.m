@@ -65,9 +65,9 @@ eh3 = uimenu(mh, LabelName, 'Save Figure without menu');
 eh3.Callback = @(src, event, varargin) saveAsFig(mh.Parent);
 eh3.Accelerator = 'T';
 
-eh3 = uimenu(mh, LabelName, 'Export to SVG');
-eh3.Callback = @(src, event, varargin) save2svg(mh.Parent);
-eh3.Accelerator = 'T';
+eh4 = uimenu(mh, LabelName, 'Export to SVG');
+eh4.Callback = @(src, event, varargin) save2svg(mh.Parent);
+eh4.Accelerator = 'T';
 
     function saveAsFig(fig,~)
         
