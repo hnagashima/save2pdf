@@ -8,4 +8,5 @@ y2 = sin(x) .* exp(-x/pi);
 plot(x,y1);
 subplot(1,2,2);
 plot(x,y2);
-save2pdf_transparent(gcf,'untitled2.pdf');
+% save2pdf_transparent(gcf,'untitled2.pdf');
+save2svg(gcf, 'untitled3.svg');
