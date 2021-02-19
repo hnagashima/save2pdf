@@ -55,19 +55,23 @@ end
 % You need to specify as a 1st and 2nd inputs,
 % even though you don't need src and event.
 
-eh1 = uimenu(mh,LabelName,'Export to PDF');
+eh1 = uimenu(mh,LabelName,'Export as PDF');
 eh1.Callback = @(src,event,varargin) save2pdf(mh.Parent);
 
-eh2 = uimenu(mh, LabelName, 'Export to transparent PDF');
+eh2 = uimenu(mh, LabelName, 'Export as transparent PDF');
 eh2.Callback = @(src,event, varargin) save2pdf_transparent(mh.Parent);
 
 eh3 = uimenu(mh, LabelName, 'Save Figure without menu');
 eh3.Callback = @(src, event, varargin) saveAsFig(mh.Parent);
-eh3.Accelerator = 'T';
+% eh3.Accelerator = 'T';  % Shortcut key
 
-eh4 = uimenu(mh, LabelName, 'Export to SVG');
+eh4 = uimenu(mh, LabelName, 'Export as SVG');
 eh4.Callback = @(src, event, varargin) save2svg(mh.Parent);
-eh4.Accelerator = 'T';
+% eh4.Accelerator = 'T';
+
+eh4 = uimenu(mh, LabelName, 'Export as transparent SVG');
+eh4.Callback = @(src, event, varargin) save2svg_transparent(mh.Parent);
+% eh4.Accelerator = 'T';
 
     function saveAsFig(fig,~)
         

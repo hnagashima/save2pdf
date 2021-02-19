@@ -9,4 +9,4 @@ plot(x,y1);
 subplot(1,2,2);
 plot(x,y2);
 % save2pdf_transparent(gcf,'untitled2.pdf');
-save2svg(gcf, 'untitled3.svg');
+save2svg_transparent(gcf, '~/Desktop/untitled3.svg');
