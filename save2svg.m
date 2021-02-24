@@ -29,7 +29,8 @@ if nargin < 2
     end
     
     % avoid MATLAB crash
-    if strcmp(defaultname(end-3:end),'.svg') == 0
+    [~,~,ext] = fileparts(defaultname);
+    if strcmp(ext,'.svg') == 0
         defaultname = [defaultname, '.svg'];
     end
     

@@ -29,7 +29,8 @@ if nargin < 2
     end
     
     % avoid MATLAB crash
-    if strcmp(defaultname(end-3:end),'.pdf') == 0
+   [~,~,ext] = fileparts(defaultname);
+    if strcmp(ext,'.pdf') == 0
         defaultname = [defaultname, '.pdf'];
     end
     
