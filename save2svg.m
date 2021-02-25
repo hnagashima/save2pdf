@@ -8,7 +8,7 @@
 % 
 % Input:
 % figure_handle : default is current figure.
-% filename : name of svg file. If filename is not specified, GUI will be shown.
+% filename : name of svg file. If filename is not specified, GUI appears
 % 
 % #Dependency
 % This function depends on the export_fig in file exchange at MATLAB
